@@ -1,0 +1,21 @@
+package com.hello.tdd.spring.api.controller.product;
+
+import com.hello.tdd.spring.api.service.product.ProductService;
+import com.hello.tdd.spring.api.service.product.response.ProductResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RequiredArgsConstructor
+@RestController
+public class ProductController {
+
+    private final ProductService productService;
+
+    @GetMapping("/api/v1/prducts/selling")
+    public List<ProductResponse> getSellingProducts() {
+        return productService.getSellingProducts();
+    }
+}
