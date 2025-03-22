@@ -1,6 +1,6 @@
 package com.hello.tdd.spring.api.service.order;
 
-import com.hello.tdd.spring.api.controller.order.request.OrderCreateRequest;
+import com.hello.tdd.spring.api.service.order.request.OrderCreateServiceRequest;
 import com.hello.tdd.spring.api.service.order.response.OrderResponse;
 import com.hello.tdd.spring.domain.order.Order;
 import com.hello.tdd.spring.domain.order.OrderRepository;
@@ -32,7 +32,7 @@ public class OrderService {
      * 재고 감소 -> 동시성 고민
      * optimistic lock / pessimistic lock / ...
      */
-    public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registeredDateTime) {
+    public OrderResponse createOrder(OrderCreateServiceRequest request, LocalDateTime registeredDateTime) {
         List<String> productNumbers = request.getProductNumbers();
         List<Product> products = findProductsBy(productNumbers);
 
