@@ -1,16 +1,11 @@
 package com.hello.tdd.spring.api.controller.product;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hello.tdd.spring.ControllerTestSupport;
 import com.hello.tdd.spring.api.controller.product.request.ProductCreateRequest;
-import com.hello.tdd.spring.api.service.product.ProductService;
 import com.hello.tdd.spring.api.service.product.response.ProductResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -22,17 +17,7 @@ import static com.hello.tdd.spring.domain.product.ProductType.HANDMADE;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@WebMvcTest(controllers = ProductController.class)
-class ProductControllerTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private ProductService productService;
-
-    @Autowired
-    private ObjectMapper objectMapper;
+class ProductControllerTest extends ControllerTestSupport {
 
     @DisplayName("신규 상품을 등록한다.")
     @Test

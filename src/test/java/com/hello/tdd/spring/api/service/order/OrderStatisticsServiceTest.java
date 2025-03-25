@@ -1,5 +1,6 @@
 package com.hello.tdd.spring.api.service.order;
 
+import com.hello.tdd.spring.IntegrationTestSupport;
 import com.hello.tdd.spring.client.mail.MailSendClient;
 import com.hello.tdd.spring.domain.history.mail.MailSendHistory;
 import com.hello.tdd.spring.domain.history.mail.MailSendHistoryRepository;
@@ -15,7 +16,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
@@ -27,8 +27,7 @@ import static com.hello.tdd.spring.domain.product.ProductType.HANDMADE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 
-@SpringBootTest
-class OrderStatisticsServiceTest {
+class OrderStatisticsServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderStatisticsService orderStatisticsService;
@@ -44,9 +43,6 @@ class OrderStatisticsServiceTest {
 
     @Autowired
     private MailSendHistoryRepository mailSendHistoryRepository;
-
-    @MockBean
-    private MailSendClient mailSendClient;
 
     @AfterEach
     void tearDown() {

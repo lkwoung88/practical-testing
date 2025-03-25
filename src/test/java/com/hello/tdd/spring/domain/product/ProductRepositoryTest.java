@@ -1,14 +1,10 @@
-package com.hello.tdd.spring.product;
+package com.hello.tdd.spring.domain.product;
 
-import com.hello.tdd.spring.domain.product.Product;
-import com.hello.tdd.spring.domain.product.ProductRepository;
-import com.hello.tdd.spring.domain.product.ProductSellingStatus;
-import com.hello.tdd.spring.domain.product.ProductType;
+import com.hello.tdd.spring.IntegrationTestSupport;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,10 +13,11 @@ import static com.hello.tdd.spring.domain.product.ProductType.HANDMADE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 
-@ActiveProfiles("test")
+//@ActiveProfiles("test")
 //@SpringBootTest
-@DataJpaTest // jpa 관련된 bean만 주입 @springBootTest보다 가벼움, 자동으로 rollback option
-class ProductRepositoryTest {
+//@DataJpaTest // jpa 관련된 bean만 주입 @springBootTest보다 가벼움, 자동으로 rollback option
+@Transactional
+class ProductRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
